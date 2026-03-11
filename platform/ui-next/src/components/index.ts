@@ -96,7 +96,6 @@ import { Toaster, toast } from './Sonner';
 import { StudySummary } from './StudySummary';
 import { ErrorBoundary } from './Errorboundary';
 import { Header } from './Header';
-import { DentalHeader } from './DentalHeader';
 import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from './Card';
 import {
   ViewportActionButton,
@@ -128,7 +127,7 @@ export * from './AllInOneMenu';
 export { default as LineChart } from './LineChart';
 export { default as InvestigationalUseDialog } from './InvestigationalUseDialog';
 export { default as LabellingFlow } from './Labelling';
-
+import DentalHeader from './DentalHeader/DentalHeader';
 // Segmentation Context Exports
 export { useSegmentationTableContext, useSegmentationExpanded, useSegmentStatistics };
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { Button, DentalHeader, Header, Icons, useModal } from '@ohif/ui-next';
+import { Button, Header, Icons, useModal, DentalHeader } from '@ohif/ui-next';
 import { useSystem, useDentalTheme } from '@ohif/core';
 import { Toolbar } from '../Toolbar/Toolbar';
 import HeaderPatientInfo from './HeaderPatientInfo';
@@ -97,7 +97,7 @@ function ViewerHeader({ appConfig }: withAppTypes<{ appConfig: AppTypes.Config }
       isReturnEnabled={!!appConfig.showStudyList}
       onClickReturnButton={onClickReturnButton}
       WhiteLabeling={appConfig.whiteLabeling}
-      Secondary={<Toolbar buttonSection="secondary" />}
+      // Secondary={<Toolbar buttonSection="secondary" />}
       PatientInfo={
         appConfig.showPatientInfo !== PatientInfoVisibility.DISABLED && (
           <HeaderPatientInfo
@@ -131,7 +131,7 @@ function ViewerHeader({ appConfig }: withAppTypes<{ appConfig: AppTypes.Config }
     >
       <div className="relative flex justify-center gap-[4px]">
         <ToothSelector />
-        {/* <Toolbar buttonSection="primary" /> */}
+        <Toolbar buttonSection="primary" />
       </div>
     </DentalHeader>
   ) : (

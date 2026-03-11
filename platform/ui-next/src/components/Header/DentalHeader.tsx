@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import NavBar from '../NavBar';
+import classNames from 'classnames';
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -9,10 +9,13 @@ import {
   Button,
   ToolButton,
 } from '../';
-import classNames from 'classnames';
 import { IconPresentationProvider } from '@ohif/ui-next';
 
-interface DentalHeaderProps {
+import NavBar from '../NavBar';
+
+// Todo: we should move this component to composition and remove props base
+
+interface HeaderProps {
   children?: ReactNode;
   menuOptions: Array<{
     title: string;
@@ -28,6 +31,7 @@ interface DentalHeaderProps {
   PatientInfo?: ReactNode;
   Secondary?: ReactNode;
   UndoRedo?: ReactNode;
+  headerTitle: string;
 }
 
 function DentalHeader({
@@ -41,13 +45,12 @@ function DentalHeader({
   UndoRedo,
   Secondary,
   ...props
-}: DentalHeaderProps): ReactNode {
+}: HeaderProps): ReactNode {
   const onClickReturn = () => {
     if (isReturnEnabled && onClickReturnButton) {
       onClickReturnButton();
     }
   };
-
   return (
     <IconPresentationProvider
       size="large"
@@ -68,14 +71,10 @@ function DentalHeader({
               data-cy="return-to-work-list"
             >
               {isReturnEnabled && <Icons.ArrowLeft className="text-primary ml-1 h-7 w-7" />}
-              <div className="ml-1">
-                <span className="font-bold text-gray-100">Practice Header: </span>
-                <span className="text-gray-100">Dental SaaS Platform (OHIF Customization) </span>
-                {/* {WhiteLabeling?.createLogoComponentFn?.(React, props) || <Icons.OHIFLogo />} */}
-              </div>
+              <div className="ml-1">{/* <span>Practice Header</span> */}</div>
             </div>
           </div>
-          {/* <div className="absolute top-1/2 left-[250px] h-8 -translate-y-1/2">{Secondary}</div> */}
+          <div className="absolute top-1/2 left-[250px] h-8 -translate-y-1/2">{Secondary}</div>
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
             <div className="flex items-center justify-center space-x-2">{children}</div>
           </div>
