@@ -67,6 +67,7 @@ function initDefaultToolGroup(extensionManager, toolGroupService, commandsManage
       { toolName: toolNames.RectangleROI },
       { toolName: toolNames.StackScroll },
       { toolName: toolNames.Angle },
+      { toolName: toolNames.Angle2 },
       { toolName: toolNames.CobbAngle },
       { toolName: toolNames.Magnify },
       { toolName: toolNames.CalibrationLine },
@@ -82,10 +83,7 @@ function initDefaultToolGroup(extensionManager, toolGroupService, commandsManage
       { toolName: toolNames.LivewireContour },
       { toolName: toolNames.WindowLevelRegion },
     ],
-    enabled: [
-      { toolName: toolNames.ImageOverlayViewer },
-      { toolName: toolNames.ReferenceLines },
-    ],
+    enabled: [{ toolName: toolNames.ImageOverlayViewer }, { toolName: toolNames.ReferenceLines }],
     disabled: [
       {
         toolName: toolNames.AdvancedMagnify,

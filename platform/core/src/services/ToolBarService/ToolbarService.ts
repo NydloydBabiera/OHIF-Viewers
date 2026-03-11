@@ -197,6 +197,7 @@ export default class ToolbarService extends PubSubService {
    */
   public register(buttons: Button[], replace: boolean = false): void {
     buttons.forEach(button => {
+      console.log('🚀 ~ ToolbarService ~ register ~ button:', button);
       if (replace || !this.state.buttons[button.id]) {
         if (!button.props) {
           button.props = {} as ButtonProps;

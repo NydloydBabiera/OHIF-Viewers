@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState, useMemo } from 'react';
 import { useSystem } from '../contextProviders/SystemProvider';
 import { ToolbarHookReturn } from './types';
 import { buildButtonCommands } from '../utils';
+import { useDentalTheme } from './useDentalMode';
 
 export function useToolbar({ buttonSection = 'primary' }: withAppTypes): ToolbarHookReturn {
   const { commandsManager, servicesManager } = useSystem();
@@ -13,6 +14,7 @@ export function useToolbar({ buttonSection = 'primary' }: withAppTypes): Toolbar
     toolbarService.getButtonSection(buttonSection as string).filter(Boolean)
   );
 
+  const { isDentalTheme } = useDentalTheme();
   // Store state of open/closed menu items
   // Note: We keep this in local state to avoid re-evaluating the toolbar on every interaction
   const [openItemIds, setOpenItemIds] = useState<Record<string, boolean>>({});

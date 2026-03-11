@@ -80,6 +80,52 @@ async function appInit(appConfigOrFunc, defaultExtensions, defaultModes) {
     [StudyPrefetcherService.REGISTRATION, appConfig.studyPrefetcher],
   ]);
 
+  const userAuthenticationService = servicesManager.services.userAuthenticationService;
+
+  userAuthenticationService.setServiceImplementation({
+    getState: () => ({
+      user: JSON.parse(sessionStorage.getItem('user') || 'null'),
+      enabled: true,
+    }),
+
+    setUser: user => {
+      sessionStorage.setItem('user', JSON.stringify(user));
+    },
+
+    getUser: () => {
+      return JSON.parse(sessionStorage.getItem('user') || 'null');
+    },
+
+    getAuthorizationHeader: () => {
+      const token = sessionStorage.getItem('token');
+
+      if (!token) return {};
+
+      return {
+        Authorization: `Bearer ${token}`,
+      };
+    },
+
+    handleUnauthenticated: () => {
+      sessionStorage.clear();
+      window.location.href = '/login';
+    },
+
+    reset: () => {
+      sessionStorage.clear();
+    },
+
+    set: state => {
+      if (state?.user) {
+        sessionStorage.setItem('user', JSON.stringify(state.user));
+      }
+
+      if (state?.token) {
+        sessionStorage.setItem('token', state.token);
+      }
+    },
+  });
+
   errorHandler.getHTTPErrorHandler = () => {
     if (typeof appConfig.httpErrorHandler === 'function') {
       return appConfig.httpErrorHandler;

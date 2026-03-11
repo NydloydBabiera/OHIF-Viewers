@@ -16,7 +16,10 @@ class UserAuthenticationService extends PubSubService {
     _setUser: () => console.warn('_setUser() NOT IMPLEMENTED'),
     _getUser: () => console.warn('_getUser() NOT IMPLEMENTED'),
     _getAuthorizationHeader: () => {}, // TODO: Implement this method
-    _handleUnauthenticated: () => console.warn('_handleUnauthenticated() NOT IMPLEMENTED'),
+    _handleUnauthenticated: () => {
+      sessionStorage.clear();
+      window.location.href = '/login';
+    },
     _reset: () => console.warn('reset() NOT IMPLEMENTED'),
     _set: () => console.warn('set() NOT IMPLEMENTED'),
   };

@@ -14,6 +14,7 @@ import PropTypes from 'prop-types';
 import { routerBasename } from '../utils/publicUrl';
 import { useAppConfig } from '@state';
 import { history } from '../utils/history';
+import LoginPage from '../pages/LoginPage';
 
 const NotFoundServer = ({
   message = 'Unable to query for studies at this time. Check your data source configuration or network connection',
@@ -67,6 +68,10 @@ NotFoundStudy.propTypes = {
 
 // TODO: Include "routes" debug route if dev build
 const bakedInRoutes = [
+  {
+    path: `/login`,
+    children: LoginPage,
+  },
   {
     path: `/notfoundserver`,
     children: NotFoundServer,
